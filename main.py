@@ -78,12 +78,8 @@ def odstranit_ukol():
             print("Vracím se do hlavního menu.")
             return
         
-        if not volba.isdigit:
+        if not volba.isdigit():
             print("Zadejte platné číslo úkolu.")
-            continue
-
-        if volba != int:
-            print("Neplatný vstup. Zadejte číselný vstup.")
             continue
 
         cislo_ukolu = int(volba)
