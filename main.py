@@ -58,15 +58,42 @@ def zobraz_ukoly():
         print("Nebyly přidány žádné úkoly.")
     else:
         print("\nSeznam úkolů:")
-        for i in enumerate(ukoly, 1):
-            print("f{i}, {ukol['název']}")
+        for i, ukol in enumerate(ukoly, 1):
+            print(f"{i}, {ukol['název']}")
 
+def odstranit_ukol():
 
+    if not ukoly:
+        print("Žádné úkoly k odstranění.")
+        return
+    
+    while True:
+        print("\nSeznam úkolů:")
+        for index, ukol in enumerate(ukoly, start=1):
+            print(f"{index}, {ukol['název']}")
 
-#def odstranit_ukol():
+        volba = input("Zadejte číslo úkolu k odstranění nebo (N) pro návrat do hlavního menu:").strip()
 
+        if volba.lower() == "n":
+            print("Vracím se do hlavního menu.")
+            return
+        
+        if not volba.isdigit:
+            print("Zadejte platné číslo úkolu.")
+            continue
 
+        if volba != int:
+            print("Neplatný vstup. Zadejte číselný vstup.")
+            continue
 
+        cislo_ukolu = int(volba)
+
+        if 1 <= cislo_ukolu <= len(ukoly):
+            odstraneny_ukol = ukoly.pop(cislo_ukolu - 1)
+            print(f"Úkol '{odstraneny_ukol['název']}' byl úspěšně odstraněn.")
+            return
+        else:
+            print("Zadné číslo neexstiuje. Zkuste to znovu.")
 
 def main():
 
@@ -75,15 +102,12 @@ def main():
 
         if volba == 1:
             pridat_ukol()
-        
         elif volba == 2:
             zobraz_ukoly()
-
         elif volba == 3:
-            print("loading 3")
-
+            odstranit_ukol()
         elif volba == 4:
-            print("Konec programu.")
+            print("Ukončuji program.")
             break
 
 if __name__ == "__main__":
