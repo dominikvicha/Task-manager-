@@ -89,7 +89,7 @@ def odstranit_ukol():
             print(f"Úkol '{odstraneny_ukol['název']}' byl úspěšně odstraněn.")
             return
         else:
-            print("Zadné číslo neexstiuje. Zkuste to znovu.")
+            print("Zadané číslo neexstiuje. Zkuste to znovu.")
 
 def main():
 
